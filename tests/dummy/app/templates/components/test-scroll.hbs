@@ -1,0 +1,15 @@
+<div style='background-color:red; height:900px;'>
+</div>
+<div style='background-color:green; height:900px;'>
+</div>
+<div style='background-color:blue; height:900px;'>
+</div>
+<div style='background-color:yellow; height:900px;'>
+</div>
+{{input type='checkbox' checked=brownEnabled}}
+<div {{check-viewport 
+        enabled=brownEnabled
+        onEnterViewport=(action 'log' 'brown enteredViewport')
+        onExitViewport=(action 'log' 'brown exitedViewport')
+    }} style='background-color:brown; height:900px;'>
+</div>
