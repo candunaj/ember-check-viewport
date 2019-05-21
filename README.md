@@ -1,7 +1,6 @@
 ember-check-viewport
 ==============================================================================
-
-[Short description of the addon.]
+Checking visibility of element 60FPS
 
 Installation
 ------------------------------------------------------------------------------
@@ -14,7 +13,11 @@ ember install ember-check-viewport
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+<div {{check-viewport onEnterViewport=(action 'viewportEntered') onExitViewport=(action 'viewportExited') enabled=true}}>
+  ...content
+</div>
+
+check-viewport mofifier will fire action onEnterViewport if at least part of element is in window. So it is not necessarily visible (because it can be hidden behind another element). But when onExitViewport fires then you can be sure it is not visible. So it can be used for performance purposes. 
 
 
 Contributing
