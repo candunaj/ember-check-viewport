@@ -36,23 +36,21 @@ const checkViewport = Modifier.extend({
     scheduleCheckInView(){
         let timerId = requestAnimationFrame(()=>{
             let isIn = this.isInView();
-            later(()=>{
-                if(isIn && this.get('visible')!==true){
-                    this.set('visible', true);
-                    if(this.get('onEnterViewport')){
-                        this.get('onEnterViewport')();
-                    }
+            if(isIn && this.get('visible')!==true){
+                this.set('visible', true);
+                if(this.get('onEnterViewport')){
+                    this.get('onEnterViewport')();
                 }
+            }
 
-                if(!isIn && this.get('visible')!==false){
-                    this.set('visible', false);
-                    if(this.get('onExitViewport')){
-                        this.get('onExitViewport')();
-                    }
+            if(!isIn && this.get('visible')!==false){
+                this.set('visible', false);
+                if(this.get('onExitViewport')){
+                    this.get('onExitViewport')();
                 }
+            }
 
-                this.scheduleCheckInView();
-            }, 0);
+            this.scheduleCheckInView();
         });
 
         this.set('timerId', timerId);
