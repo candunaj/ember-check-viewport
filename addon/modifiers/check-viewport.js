@@ -1,5 +1,5 @@
 import { Modifier } from 'ember-oo-modifiers';
-import { next } from '@ember/runloop';
+import { later } from '@ember/runloop';
 
 const checkViewport = Modifier.extend({
     visible: null,
@@ -36,7 +36,7 @@ const checkViewport = Modifier.extend({
     scheduleCheckInView(){
         let timerId = requestAnimationFrame(()=>{
             let isIn = this.isInView();
-            next(()=>{
+            later(()=>{
                 if(isIn && this.get('visible')!==true){
                     this.set('visible', true);
                     if(this.get('onEnterViewport')){
@@ -52,7 +52,7 @@ const checkViewport = Modifier.extend({
                 }
 
                 this.scheduleCheckInView();
-            });
+            }, 0);
         });
 
         this.set('timerId', timerId);
