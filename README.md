@@ -15,7 +15,7 @@ Usage
 
 &lt;div {{check-viewport onEnterViewport=(action 'viewportEntered') onExitViewport=(action 'viewportExited') enabled=true}}&gt;
   ...content
-&gt;/div&lt;
+&lt;/div&gt;
 
 check-viewport mofifier will fire action onEnterViewport if at least part of element is in window. So it is not necessarily visible (because it can be hidden behind another element). But when onExitViewport fires then you can be sure it is not visible. So it can be used for performance purposes. 
 
