@@ -1,5 +1,4 @@
 import { Modifier } from 'ember-oo-modifiers';
-import { later } from '@ember/runloop';
 
 const checkViewport = Modifier.extend({
     visible: null,
